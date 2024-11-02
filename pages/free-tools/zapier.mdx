@@ -1,0 +1,54 @@
+---
+title: "Zapier Integration"
+description: "We'll walk you through creating a Zap to send lead info from the Lead Gen Roleplay to your CRM"
+---
+
+<Note>
+Each webhook URL that you put into Replay is specific to the premade roleplay where you input it.
+
+If you have multiple premade roleplays that should all use the same Zap, you'll need to follow steps 1 & 3 for each roleplay, all using the same webhook URL from Zapier.
+
+</Note>
+
+<Steps>
+  <Step title="On Replay">
+    1. Go to the Premade Roleplay you are using as a Lead Gen tool
+    2. At the top right, click the ellipsis -> export
+    3. In the modal that pops up, go to the Lead Gen (Demo) tab
+    4. Make sure you have the correct Host URL set to avoid getting errors. [More information can be found here](/free-tools/lead-gen-tool#troubleshooting)
+    5. Switch the tab to Zapier - Send Leads to your CRM. We'll come back here after doing some configuration on Zapier
+  </Step>
+
+<Step title="On Zapier">
+  1. Create a new Zap 2. Add a Webhook component that uses a catch hook event 3.
+  On the Test tab, copy the webhook URL that Zapier generates for you 4. Head
+  back to Replay
+</Step>
+
+<Step title="Back on Replay">
+  1. Paste the Webhook URL from Zapier into the Webhook URL box on Replay 2.
+  Make sure to save! 3. Click Test to send a contact with test information to
+  Zapier
+</Step>
+
+  <Step title="Back to Zapier">
+    1. Still on the Test tab, click Find New Records
+    2. You should now see a record containing the test contact information from Replay!
+    3. Next, add a component to your Zap to send the information to your CRM
+    4. Make sure to use a Create or Update event from your CRM
+
+    For example, if you use HubSpot, your Zap should look like the image below:
+
+    <Frame>
+      <img src="/images/hubspot-zap-example.png" alt="Example of HubSpot Zap configuration" />
+    </Frame>
+
+    5. Inside of your CRM's component, go to the Action tab and map the values from Replay to the values you want in your CRM
+    6. Publish your Zap! Once it's published, Replay will send information for anyone who fills out the form on your Lead Gen roleplay to Zapier, and from Zapier to your CRM!
+
+  </Step>
+</Steps>
+
+<Note type="info">
+  Reach out to us at hello@replay.sale or through Slack if you need any help!
+</Note>

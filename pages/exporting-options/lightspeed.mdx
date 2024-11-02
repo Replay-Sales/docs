@@ -1,0 +1,38 @@
+---
+title: 'Export to Lightspeed VT'
+description: 'How to add Replay SCORM packages to Lightspeed VT'
+---
+
+<Steps>
+  <Step title="Head to the Super Admin Dashboard > 301 Create/Edit Courseware">
+  </Step>
+
+  <Step title="Add a new course">
+    1. Change the course type to SCORM Course
+    2. Make sure to give a course name and select a category
+    3. Add the SCORM Course
+       * Click Select From Library > Upload > [Choose the SCORM package you want to upload]
+       * You may need to close the menu and reopen it to get the SCORM package you just uploaded to show up
+
+    <Warning>
+      We recommend you set score by to "success"
+
+      - If set to completion - Lightspeed will mark the course as complete as soon as the rep opens the SCORM file.
+      - When set to success - Replay will determine if the rep has satisfied the requirements (i.e. achieved 70% or higher on a roleplay, finished all script memorization levels, etc.) and will report success to the Lightspeed.
+    </Warning>
+
+  </Step>
+
+  <Step title="Save and preview!">
+    1. Edit anything else (keywords, course description, thumbnail image, etc.) then save your course
+    2. Publish it to the content roles and locations that should be able to access it, and you should be good to go!
+  </Step>
+</Steps>
+
+<Accordion title="I want to switch out a SCORM course for a new one">
+  Lightspeed caches a course to a user account as soon as they open it. Any new uses who open the course will see the new course. Any old users who reopen the course will see the original (old) course. This can be fixed by doing a progress reset.
+  
+  After switching out the course, head to the Super Admin Dashboard > Reset In Progress Data > [enter the course ID] > reset.
+  
+  Now all users (old and new) will see the updated SCORM package when they load it. Any old users who had passed off the course will need to pass it again to mark it as completed.
+</Accordion>

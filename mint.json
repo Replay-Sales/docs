@@ -1,91 +1,95 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Replay Docs",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/images/logo/logo-with-text.png",
+    "light": "/images/logo/logo-with-black-text.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/images/logo/favicon.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#1777ff",
+    "light": "#1777ff",
+    "dark": "#1777ff",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#1777ff",
+      "to": "#fff"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:hello@replay.sale"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Login to Replay",
+    "url": "https://app.replay.sale"
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "Documentation",
+      "url": "docs"
     }
   ],
+  "codeBlock": { "mode": "auto" },
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "Login to Replay",
+      "icon": "right-to-bracket",
+      "url": "https://app.replay.sale"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+      "pages": [ "/pages/get-started/introduction" ]
+    },
+    {
+      "group": "Free To Use Tools",
+      "pages": [ 
+        "/pages/free-tools/lead-gen-tool",
+        "/pages/free-tools/zapier",
+        "/pages/free-tools/embedding-in-hubspot"
       ]
     },
     {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+      "group": "Roleplay Building Blocks",
+      "pages": [ 
+        "/pages/roleplay-building-blocks/scenarios",
+        "/pages/roleplay-building-blocks/customers",
+        "/pages/roleplay-building-blocks/responses",
+        "/pages/roleplay-building-blocks/scorecards",
+        "/pages/roleplay-building-blocks/skill-prompts"
       ]
     },
     {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
+      "group": "Activities",
+      "pages": [ 
+        "/pages/activities/premade-roleplays",
+        "/pages/activities/start-screen",
+        "/pages/activities/script-memorization"
       ]
     },
     {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+      "group": "Exporting Options",
+      "pages": [ 
+        {
+          "group": "SCORM",
+          "pages": [
+            "/pages/exporting-options/scorm",
+            "/pages/exporting-options/learnworlds",
+            "/pages/exporting-options/lightspeed"
+          ]
+        },
+        "/pages/exporting-options/iframe"
       ]
+    },
+    {
+      "group": "Changelog",
+      "pages": ["/pages/changelog/changelog"]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "linkedin": "https://www.linkedin.com/company/replaysales"
   }
 }

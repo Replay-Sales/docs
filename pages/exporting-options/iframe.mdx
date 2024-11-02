@@ -1,0 +1,214 @@
+---
+title: 'Iframe'
+---
+
+<Warning>
+  Advanced! Developers with backend access to your LMS/Website is required for this method to work
+</Warning>
+
+<Steps>
+  <Step title="Copy the Iframe">
+    Each activity requires a specific iframe configuration. Here's the base template:
+
+    ```html
+    <iframe
+      id="replay-iframe"
+      src="https://app.replay.sale/api/iframe/launch?activityId=403dded8-6a20-410d-a234-75c0f35f44f0&activityType=premade-roleplay&integrationJwt=<INPUT_INTEGRATION_JWT>"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      border="none"
+      allow="microphone; camera; clipboard-write; downloads;"
+      style="position: absolute; left: 0; right: 0; bottom: 0; top: 0;"
+    ></iframe>
+    ```
+
+    <Accordion title="Do I have to copy the iframe every time? Or can I make it more dynamic?">
+      __You do not need to copy the iframe every time.__ You are free to make it more dynamic by generating the iframe on your side, but in order to get the user into the correct activity, we will need the following:
+
+      **src attributes:**
+      * `a base url` (typically https://yourcompany.replay.sale)
+      * `activityId` (the unique id of the activity you want to load)
+      * `activityType` (the type of activity you want to load)
+      * `integrationJwt` (a signed JWT that has the required claims. See step 2 for more details)
+
+      **iframe attributes:**
+      * `allow="microphone; camera; clipboard-write; downloads;"`
+        * `microphone` and `camera` allow us to record the user
+        * `clipboard-write` allows the user to copy a link to their roleplay analysis
+        * `downloads` allows the user to download their audio / video recording
+    </Accordion>
+
+  </Step>
+
+  <Step title="Generate a Signed JWT">
+    You must generate a unique JWT for each user using your secret key. The JWT requires these claims:
+
+    * `learnerName` - User's name (first, last, or both)
+    * `uniqueIdentifier` - Your database's unique identifier for this user (UUID, email, etc.)
+    * `originDomain` - Your company's domain (e.g., `app.replay.sale`)
+
+    <Warning>
+      Need a secret key or lost yours? Contact us through email (hello@replay.sale) or Slack
+    </Warning>
+
+  </Step>
+
+  <Step title="Implement the Integration">
+    1. Generate the signed JWT for your user
+    2. Replace `<INPUT_INTEGRATION_JWT>` in the iframe src with your signed JWT
+    3. Load the iframe
+
+    <Note>
+      Best practice: Create a function that handles JWT generation and iframe src updates before loading
+    </Note>
+
+  </Step>
+
+  <Step title="Test Your Integration">
+    Load your page and verify that:
+    * The iframe loads successfully
+    * User information is correct
+    * Recording permissions work
+    * Downloads function properly
+
+    Need help? Contact us at hello@replay.sale
+
+  </Step>
+</Steps>
+
+## Code Examples
+
+<CodeGroup>
+      ```javascript Sign your own JWT
+      // Your backend route should use a function like this to sign the JWT
+      const signReplayJwt = () => {
+        const uniqueIdentifier = "asdf1234"; // Replace with the actual unique identifier of your user
+        const learnerName = "John Doe"; // Replace with your actual learner name
+        const originDomain = "example.com"; // Replace with your domain
+
+        const payload = {
+          uniqueIdentifier,
+          learnerName,
+          originDomain,
+        };
+
+        const secret = process.env.REPLAY_SECRET; // Replace with your actual secret that you got from Replay
+
+        const integrationToken = jwt.sign(payload, secret, { expiresIn: "1h" });
+
+        return integrationToken;
+      };
+      ```
+
+      ```html Iframe Example
+      <!-- Once signed and finished, your iframe will end up looking like this -->
+      <iframe
+        id="replay-iframe"
+        src="https://app.replay.sale/api/iframe/launch?activityId=bfaba734-35bf-41a2-9ca5-bbc4f5f04888&activityType=script&type=iframe&integrationJwt={}"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        border="none"
+        allow="microphone; camera; clipboard-write;"
+        style="
+          background-color: red;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+        "
+      ></iframe>
+      ```
+
+      ```html Complete HTML Example
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Replay Integration</title>
+        </head>
+        <body>
+          <!-- Create an iframe with no src, but DO include the iframe id as "replay-iframe" -->
+          <iframe
+            id="replay-iframe"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            border="none"
+            allow="microphone; camera; clipboard-write;"
+            style="
+              background-color: red;
+              position: absolute;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              top: 0;
+            "
+          ></iframe>
+
+          <!-- Use a script to combine the activity URL with your own, signed JWT -->
+          <script>
+            (async function () {
+              const setIframeSource = async () => {
+                try {
+                  // Sign the JWT using your backend
+                  const routeToSignJwt = "https://my-backend/sign-jwt"; // Replace with your actual backend URL
+                  const response = await fetch(routeToSignJwt, {
+                    headers: {}, // Don't forget any authentication headers!
+                  });
+
+                  if (!response.ok) throw new Error("Failed to generate JWT");
+
+                  // Combined the signed JWT with the activity URL. Use the combined URL to set the iframe source
+                  const activityUrl =
+                    "http://localhost:3000/api/iframe/launch?activityId=bfaba734-35bf-41a2-9ca5-bbc4f5f04888&activityType=script&type=iframe";
+                  const iframe = document.getElementById("replay-iframe");
+                  const data = await response.json();
+                  iframe.src = activityUrl + "&integrationJwt=" + data.token;
+                } catch (error) {
+                  console.error("Error setting iframe source:", error);
+                }
+              };
+
+              // Set the iframe source when the document is ready
+              document.addEventListener("DOMContentLoaded", () => setIframeSource());
+            })();
+          </script>
+        </body>
+      </html>
+      ```
+
+      ```javascript Script Example
+      <!-- Use a script to combine the activity URL with your own, signed JWT -->
+      <script>
+        (async function () {
+          const setIframeSource = async () => {
+            try {
+              // Sign the JWT using your backend
+              const routeToSignJwt = "https://my-backend/sign-jwt"; // Replace with your actual backend URL
+              const response = await fetch(routeToSignJwt, {
+                headers: {}, // Don't forget any authentication headers!
+              });
+
+              if (!response.ok) throw new Error("Failed to generate JWT");
+
+              // Combined the signed JWT with the activity URL. Use the combined URL to set the iframe source
+              const activityUrl =
+                "http://localhost:3000/api/iframe/launch?activityId=bfaba734-35bf-41a2-9ca5-bbc4f5f04888&activityType=script&type=iframe";
+              const iframe = document.getElementById("replay-iframe");
+              const data = await response.json();
+              iframe.src = activityUrl + "&integrationJwt=" + data.token;
+            } catch (error) {
+              console.error("Error setting iframe source:", error);
+            }
+          };
+
+          // Set the iframe source when the document is ready
+          document.addEventListener("DOMContentLoaded", () => setIframeSource());
+        })();
+      </script>
+      ```
+    </CodeGroup>

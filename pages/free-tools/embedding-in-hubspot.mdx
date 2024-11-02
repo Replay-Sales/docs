@@ -1,0 +1,96 @@
+---
+title: "Embedding in HubSpot"
+description: "A step-by-step guide to embedding Replay roleplays in HubSpot pages"
+---
+
+Finding the right place to put your roleplay on HubSpot can be tough; we'll walk you through it below!
+
+<Steps>
+  <Step title="Insert a Rich Text Component">
+    Open the HubSpot page where you want to put Replay and add a "Rich Text" Component
+
+    <Frame>
+      <img src="/images/hubspot-insert-rich-text.png" alt="Adding a Rich Text component in HubSpot" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Access Embed Options">
+    Select the component, then click Insert, then "Embed"
+
+    <Frame>
+      <img src="/images/hubspot-click-embed.png" alt="Accessing embed options in HubSpot" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Add Replay Code">
+    Insert the embed code you copied from Replay
+
+    <Frame>
+      <img src="/images/hubspot-insert-embed-code.png" alt="Adding Replay embed code to HubSpot" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Set the component dimensions">
+    After you insert the code, it will appear blank, but if you click on it, you should see an outline of where it will go.
+
+    <Note>
+      Set the dimensions so that the height is at least 750px. The width is more up to what looks good for your website, but you can try ~1000px and see how it looks.
+    </Note>
+
+    <Frame>
+      <img src="/images/hubspot-set-component-dimensions.png" alt="Setting component dimensions in HubSpot" />
+    </Frame>
+
+  </Step>
+
+  <Step title="View the Preview">
+    Initially, the first preview page will show an error.
+
+    <Note type="success">
+      As long as you see the error, that means your page has successfully connected to Replay.
+    </Note>
+
+    HubSpot uses a hidden URL for this preview page, so this page will always show an error.
+
+    <Frame>
+      <img src="/images/hubspot-preview-error.png" alt="Initial preview will show error" />
+    </Frame>
+
+    <Warning>
+      To preview and see Replay working:
+      1. Click the Open in New Tab button at the top right
+      2. Copy the URL from that page
+      3. Paste it in the "Host URLs" page on Replay
+    </Warning>
+
+    <CardGroup cols={2}>
+      <Card title="Step 1">
+        <img src="/images/hubspot-click-open-in-new-tab.png" alt="Copy the URL after clicking 'Open in New Tab'" />
+        <p>Copy the URL after clicking 'Open in New Tab'</p>
+      </Card>
+      <Card title="Step 2">
+        <img src="/images/hubspot-insert-url.png" alt="Insert the copied URL to the 'Host URLs' page on Replay" />
+        <p>Insert the copied URL to the 'Host URLs' page on Replay</p>
+      </Card>
+    </CardGroup>
+
+  </Step>
+
+  <Step title="View the Working Page">
+    After adding the "Host URLs", you should see Replay appear on the preview -> open in new tab page!
+
+    <Frame>
+      <img src="/images/hubspot-working-preview.jpeg" alt="Preview should now load Replay" />
+    </Frame>
+
+  </Step>
+
+  <Step title="Save changes and deploy your website">
+    <Warning>
+      If your production website uses a different URL than the preview, you may see an error. To fix this, simply copy the URL of the production website and add it to the "Host URLs" page on Replay.
+    </Warning>
+  </Step>
+</Steps>
