@@ -85,6 +85,10 @@
       ]
     },
     {
+      "group": "Walkthroughs",
+      "pages": ["/pages/walkthroughs/company-settings"]
+    },
+    {
       "group": "Changelog",
       "pages": ["/pages/changelog/changelog"]
     }
