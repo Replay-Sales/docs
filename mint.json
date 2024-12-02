@@ -53,21 +53,21 @@
       ]
     },
     {
-      "group": "Roleplay Building Blocks",
+      "group": "Activities",
+      "pages": [ 
+        "/pages/activities/premade-roleplays",
+        "/pages/activities/start-screen",
+        "/pages/activities/script-memorization"
+      ]
+    },
+    {
+      "group": "Building Blocks",
       "pages": [ 
         "/pages/roleplay-building-blocks/scenarios",
         "/pages/roleplay-building-blocks/customers",
         "/pages/roleplay-building-blocks/responses",
         "/pages/roleplay-building-blocks/scorecards",
         "/pages/roleplay-building-blocks/skill-prompts"
-      ]
-    },
-    {
-      "group": "Activities",
-      "pages": [ 
-        "/pages/activities/premade-roleplays",
-        "/pages/activities/start-screen",
-        "/pages/activities/script-memorization"
       ]
     },
     {
