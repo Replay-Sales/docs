@@ -1,50 +1,50 @@
 ---
 title: "Scenarios"
-description: "The different types of conversations a rep will have while doing their job"
+description: "Define the conversation context and AI behavior for your roleplays"
 ---
 
-## How do I use Scenarios?
+<iframe
+  width="100%"
+  height="400"
+  src="https://www.loom.com/embed/2c4b34714e814c74af2012a03ecf4a0a?sid=ce0d15ab-db8f-4be1-b912-b920349e4c2c"
+  frameborder="0"
+  webkitallowfullscreen
+  mozallowfullscreen
+  allowfullscreen
+></iframe>
 
-Real life conversations can be LONG, and usually reps don't need to roleplay an entire conversation.
+## Building Scenarios
 
-At Replay, we encourage reps to roleplay the portion of the conversation that is relevant to what they are learning, that way they can focus on the skill they are learning, rather than focusing on roleplaying a drawn-out conversation.
+A scenario consists of three main components:
 
-In Replay, you'll see that Scenario Folders are made of Scenarios, which are the various points within a conversation a rep will practice.
+### 1. AI Context
 
-Let's look at a few examples:
+This tells the AI what has happened up until this point in the conversation. Examples:
 
-| Scenario Folder | Scenario 1           | Scenario 2      | Scenario 3      |
-| --------------- | -------------------- | --------------- | --------------- |
-| Door Approach   | Break Pre-Occupation | Set the Meeting |                 |
-| Virtual Setting | Intro                | Qualifying      | Set the Meeting |
-| Virtual Closing | Discovery            | Demo            | Next Steps      |
+- **Cold Call**: "_You got a call from an unknown number and picked up_"
+- **Mid-Sales Conversation**: "_You've had a 30-minute conversation about the product, and the rep has asked if you're willing to move forward_"
 
 <Note>
-  You'll notice that scenarios flow sequentially, just as the conversation
-  typically does, but lets the rep focus on just one part at a time.
+  Important: The AI context should NOT include:
+  - Customer-specific information (this goes in the customer situation)
+  - Product details (this goes in the solutions building block)
 </Note>
 
-## Customers, responses, and scorecards are all tied to scenarios
+### 2. AI Instructions
 
-Think about it. If you are cold calling someone, you might get a very wide range of customer types who answer the phone. They might be nice, or they could just want you out of their hair.
+These are specific instructions for how the AI should behave in this type of conversation:
 
-However, if you are on a closing call with someone and have been speaking to them for the past 30 minutes, they probably won't be giving quick responses to get you to bug off.
+- **Cold Call Example**: AI gives more frequent objections and is less receptive
+- **Discovery Call Example**: AI is more open to answering questions and engaging
 
-The same could be said about responses. A customer at the beginning of a cold call might try to brush off a rep with an "I'm busy" smokescreen, but that typically wouldn't happen when talking next steps.
+### 3. Opening Line
 
-<Info>
-  In Replay, you get to decide which customers, responses, and scorecards go to
-  which scenario. By doing so, you'll make sure your reps get a realistic
-  roleplay experience, based on where they are in the conversation.
-</Info>
+The conversation starter, which can be:
 
-Head to `Replay > Customization > Scenarios` to build your conversations / starting points
-
-<Card title="Example of a scenario folder (left) and editing a scenario (right)">
-  <Frame>
-    <img
-      src="/images/scenario-example.jpeg"
-      alt="Example of a scenario folder (left) and editing a scenario (right)"
-    />
-  </Frame>
-</Card>
+- Sound-based starts:
+  - Outbound phone
+  - Inbound phone
+  - Door knock
+- Mid-conversation starts:
+  - Specific dialogue line
+  - Continuation from a previous point

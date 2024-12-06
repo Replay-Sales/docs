@@ -65,9 +65,11 @@
       "pages": [ 
         "/pages/roleplay-building-blocks/scenarios",
         "/pages/roleplay-building-blocks/customers",
-        "/pages/roleplay-building-blocks/responses",
         "/pages/roleplay-building-blocks/scorecards",
-        "/pages/roleplay-building-blocks/skill-prompts"
+        "/pages/roleplay-building-blocks/skill-prompts",
+        "/pages/roleplay-building-blocks/solutions",
+        "/pages/roleplay-building-blocks/user-instructions",
+        "/pages/roleplay-building-blocks/responses"
       ]
     },
     {

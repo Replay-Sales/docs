@@ -3,74 +3,87 @@ title: "Customers"
 description: "A collection of customer types a rep might face"
 ---
 
-## How do I use customers?
+<iframe
+  width="100%"
+  height="400"
+  src="https://www.loom.com/embed/f6ca0a59a2544a64a967c2ecc173bf7c?sid=662e4547-45fb-4c9f-95db-8fa1bd2feea7"
+  frameborder="0"
+  webkitallowfullscreen
+  mozallowfullscreen
+  allowfullscreen
+></iframe>
 
-There is a wide range of customer types that a rep might face. They might be easy-going, might need some convincing, or might be difficult and demanding. Each customer type requires a unique approach to ensure their needs are met and they have a positive experience.
+## Customer Components
 
-You can simulate these customer types in Replay by creating a customer.
-
-## AI Components for Creating Customers
-
-### Personality: How should this customer respond to your rep?
-
-<CodeGroup>
-  ```text:Example 1
-  You are generally happy and aim to answer all the rep's questions.
-  ```
-  ```text:Example 2
-  You are getting annoyed with sales reps constantly calling you.
-  ```
-</CodeGroup>
-
-### Pain Points: Does the customer have any pain points that your product would help with?
-
-<CodeGroup>
-  ```text:Example 1 
-  You have been struggling with an extremely burdensome hiring process and are looking for a solution. 
-  ``` 
-  ```text:Example 2
-  You do your bookkeeping manually, and this is taking up too much time.
-  ```
-</CodeGroup>
-
-### Additional Context: Is there any other relevant information that doesn't fit into our other fields?
-
-<CodeGroup>
-  ```text:Example 1
-  You have a wife (Jennifer - 38 years old) and two kids (James - 10, and Suzy - 8).
-  ```
-  ```text:Example 2
-  You live at 123 Main Street, Omaha, Nebraska.
-  ```
-</CodeGroup>
+The customer building block consists of two main parts: **Personas** and **Situations**.
 
 <Note type="warning">
-Important: speak to the AI as if you were training your rep how to be a customer.
-
-Examples:
-
-- You are...
-- You will...
-- You have been looking for...
-
+  Important: When writing for the AI, speak to it directly as if you're training it to be a customer.
+  
+  Examples:
+  - "You are..."
+  - "You will..."
+  - "You have been looking for..."
 </Note>
 
-## FAQ
+### 1. Customer Personas
 
-<AccordionGroup>
-  <Accordion title="Tips / Tricks for getting the AI to respond correctly">
-    Here are some helpful tips for getting better AI responses...
-  </Accordion>
+Personas define the AI's appearance and personality:
 
-  <Accordion title="The AI won't give out any personal information">
-    Details about AI privacy and information handling...
-  </Accordion>
-</AccordionGroup>
+- **Appearance Settings**
 
-Head to `Replay > Customization > Customers` to build your customers
+  - **Profile picture**: Choose an avatar that matches your target customer demographic
+  - **Name**: Give your persona a realistic name
+  - **Age**: Set an appropriate age for your target customer
+  - **Voice**: Choose from our library of AI voices to match the persona
 
-<Card title="Example of a full customer">
-  <Frame>
-    <img src="/images/customer-example.jpeg" />
-  </Frame>
-</Card>
+- **Personality Traits**
+  - **Confidence level**: From hesitant ("_You are unsure about making changes to your current system_") to very confident ("_You know exactly what features you need_")
+  - **Knowledge level**: From novice ("_You have never used this type of software before_") to expert ("_You have researched all our competitors_")
+  - **Detail orientation**: From big picture ("_You want to focus on overall impact_") to detail-focused ("_You need specific data about implementation timelines_")
+  - **Assertiveness**: From passive ("_You prefer to let the rep guide the conversation_") to demanding ("_You need concrete answers about pricing_")
+  - **Professionalism**: From casual ("_You prefer informal conversations_") to formal ("_You expect professional business interactions_")
+  - **Difficulty level**:
+    - **Easy**: "_You are excited to learn about our solution_"
+    - **Medium**: "_You have several concerns that need to be addressed_"
+    - **Hard**: "_You are skeptical of our claims and need proof_"
+
+### 2. Customer Situations
+
+Situations define the business context and needs:
+
+- **Company Details**
+
+  - **Job title**: Position and level of authority (e.g., "_VP of Sales_", "_HR Manager_")
+  - **Company name**: Can be real or fictional
+  - **Company size/revenue**: Helps determine budget and scale of needs
+  - **Industry**: Affects pain points and solution requirements
+
+- **Business Context**
+  - **Pain points**: Specific problems you're facing
+    - "_You are frustrated that your team spends 4 hours per day on data entry_"
+    - "_You are losing 30% of customers due to slow response times_"
+  - **Specific needs**: What you're looking for
+    - "_You need integration with your existing CRM_"
+    - "_You require support for multiple languages_"
+  - **Current challenges**: Your business issues
+    - "_You are growing too fast to maintain quality_"
+    - "_You have high employee turnover in customer service_"
+  - **Business goals**: What you want to achieve
+    - "_You need to increase sales efficiency by 25%_"
+    - "_You want to reduce customer churn by 50%_"
+
+## Creating Variety
+
+You can mix and match personas and situations with premade roleplays to create diverse training roleplays:
+
+- **Different Difficulty Levels**
+
+  - **Easy**: "_You have heard great things about our solution_"
+  - **Medium**: "_You are currently comparing several vendors_"
+  - **Hard**: "_You have a better offer from our competitor_"
+
+- **Different Buyer Types**
+  - **Technical buyer**: Focuses on specifications and integration
+  - **Financial buyer**: Focuses on ROI and cost savings
+  - **End-user buyer**: Focuses on ease of use and features

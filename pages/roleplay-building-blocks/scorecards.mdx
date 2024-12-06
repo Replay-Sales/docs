@@ -1,20 +1,63 @@
 ---
 title: 'Scorecards'
-description: 'Use AI to judge a roleplay just like a manager would'
+description: 'Define how the AI evaluates your reps conversations'
 ---
 
-## How do I use scorecards?
+<iframe
+  width="100%"
+  height="400"
+  src="https://www.loom.com/embed/1d0e50cb5116438d891866970ad1fc55?sid=497fc2f7-32ff-4e59-bc12-55f4ca3ea0c8"
+  frameborder="0"
+  webkitallowfullscreen
+  mozallowfullscreen
+  allowfullscreen
+></iframe>
 
-Customize the feedback that is given after a roleplay by using a scorecard.
+## What are Scorecards?
 
-A scorecard is a collection of AI prompts or paraverbal metrics that judge whether a rep successfully completed a task or used a skill.
+Scorecards provide the AI with a specific rubric to evaluate conversations. The AI will analyze the conversation transcript and score it based on the criteria you define.
 
-You get to choose the prompts that go into a scorecard. Then, you can assign a weight to each prompt. The analysis will take these weights into account in order to create the final score.
+## Building a Scorecard
 
-<Card title="Example of a scorecard">
-  <Frame>
-    <img src="/images/scorecard-example.jpeg" />
-  </Frame>
-</Card>
+### Question Types
 
-Head to `Replay > Customization > Scorecards` to build your scorecards
+You can create different types of evaluation criteria:
+
+- **Yes/No Questions**: Simple binary evaluation
+- **Compound Questions**: Combination of multiple yes/no criteria
+- **Open-ended Questions**: For gathering general feedback
+- **Range Questions**: Score on a scale of 1-10
+
+### Criteria Components
+
+Each scoring criterion includes:
+
+- Title
+- Question type
+- Specific question for the AI to evaluate
+- Weight (importance in the overall score)
+
+<Note>
+  The AI evaluates the conversation transcript against each criterion to generate the final score.
+</Note>
+
+## Example Structure
+
+A typical scorecard might evaluate:
+
+- Call to action
+- Building urgency
+- Introduction
+- Benefit explanation
+
+<Tip>
+  Use the "Distribute Weights" button to automatically balance the scoring criteria evenly.
+</Tip>
+
+## Reusability
+
+Criteria can be:
+
+- Saved and reused across different scorecards
+- Mixed and matched for different types of conversations
+- Adjusted with different weights for various scenarios
