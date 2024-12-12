@@ -212,3 +212,180 @@ title: 'Iframe'
       </script>
       ```
     </CodeGroup>
+
+## Message Passing
+
+After the user completes the roleplay, the iframe will send messages to the parent window containing information about the user's performance and progress. To receive these messages, you'll need to set up an event listener in your parent window.
+
+### Setting Up the Listener
+
+Add this code to your parent window to receive messages from the Replay iframe:
+
+```typescript
+window.addEventListener('message', function(event) {
+    // Only accept messages from your Replay domain
+    if (event.origin !== 'https://app.replay.sale') return;
+
+    console.log('Received message from iframe:', event.data);
+
+    if (event.data.type === 'roleplay_result') {
+        console.log('Score:', event.data.score);
+        console.log('Full result:', event.data.result);
+    }
+});
+```
+
+### Message Interface
+
+```typescript
+interface IframeRoleplayResultsMessageData {
+  type: "roleplay_result";
+  score: number;
+  results: ReplayResponse;  // Uses the ReplayResponse interface defined above
+}
+```
+
+<Note>
+  The message type will always be "roleplay_result" and will contain both the overall score and the complete results object.
+</Note>
+
+### Data Model
+
+Below is the complete data model that you'll receive from the iframe messages.
+
+**Please note** - we have additional fields available that we are not currently sending. If you're application needs more data that we are not currently sending, please contact us.
+
+```typescript
+interface RoleplayResult {
+    // Unique identifier for the roleplay session
+    id: string;
+
+    // Performance metrics
+    length: number; // Duration of the roleplay in milliseconds
+    wpm: number; // Words per minute
+    name_count: number; // Number of times names were mentioned
+    num_questions: number; // Number of questions asked
+    num_filler_words: number; // Number of filler words used
+    score: number; // Overall score (0-100)
+
+    // Timestamps
+    created_at: string; // ISO timestamp - roughly equates to when the roleplay start time
+    updated_at: string; // ISO timestamp - roughly equates to when the roleplay end time
+
+    // User information
+    user: {
+        first_name: string;
+        last_name: string;
+        origin: string | null;
+        integration_identifier: string | null;
+    };
+
+    // Roleplay configuration
+    premade_roleplay: {
+        title: string;
+        passing_score: number;
+    };
+
+    // Conversation transcript
+    snippets: Array<{
+        is_user: boolean;
+        text: string;
+    }>;
+
+    // Scenario details
+    scenario: {
+        title: string;
+    };
+
+    // Customer information
+    customer_persona: {
+        image_url: string;
+        name: string;
+    };
+
+    customer_situation: {
+        job_title: string;
+        company_name: string;
+    };
+
+    // Evaluation criteria
+    scorecard: {
+        title: string;
+    };
+
+    // Evaluation responses
+    prompt_responses: Array<{
+        title: string;
+        passed: boolean;
+        explanation: string | null;
+    }>;
+}
+```
+
+### Example Response
+
+Here's an example of what the response data looks like:
+
+```javascript
+{
+    "id": "63da9aca-c1d0-4ce7-a7dd-9af07be150dd",
+    "length": 10000,
+    "wpm": 204,
+    "name_count": 0,
+    "num_questions": 0,
+    "num_filler_words": 0,
+    "score": 76.1,
+    "expected_audio_url": "https://resynthesis.blob.core.windows.net/ceeea412-2ccb-4f97-a82a-a952e64f2935/full_recording/63da9aca-c1d0-4ce7-a7dd-9af07be150dd.ogg",
+    "expected_video_url": "https://resynthesis.blob.core.windows.net/ceeea412-2ccb-4f97-a82a-a952e64f2935/converted_video_recording/63da9aca-c1d0-4ce7-a7dd-9af07be150dd.mp4",
+    "created_at": "2024-12-11T21:28:34.120Z",
+    "updated_at": "2024-12-11T21:29:14.482Z",
+    "user": {
+        "first_name": "Test",
+        "last_name": "User",
+        "origin": "https://app.replay.sale",
+        "integration_identifier": "1234567890"
+    },
+    "premade_roleplay": {
+        "title": "Discovery",
+        "passing_score": 75
+    },
+    "snippets": [
+        {
+            "is_user": false,
+            "text": "Hello?"
+        },
+        {
+            "is_user": true,
+            "text": "This is John Doe from Replay. I'm calling to see if you're interested in our new product."
+        },
+        {
+            "is_user": false,
+            "text": "Yeah, I'd love to sign up for a demo..."
+        }
+    ],
+    "scenario": {
+        "title": "Discovery"
+    },
+    "customer_persona": {
+        "image_url": "https://randomuser.me/api/portraits/women/2.jpg",
+        "name": "Karen"
+    },
+    "customer_situation": {
+        "job_title": "Sales Manager",
+        "company_name": "Acme, Inc."
+    },
+    "prompt_responses": [
+        {
+            "title": "Did the user set up a specific time for the demo?",
+            "passed": false,
+            "explanation": "No, the rep did not mention a specific time for the demo."
+        },
+        {
+            "title": "Did the user mention Replay?",
+            "passed": true,
+            "explanation": "Yes, the rep mentioned Replay during the call. This is a passing response."
+        }
+        // ... additional prompt responses
+    ]
+}
+```
