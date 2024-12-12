@@ -272,12 +272,11 @@ interface RoleplayResult {
     created_at: string; // ISO timestamp - roughly equates to when the roleplay start time
     updated_at: string; // ISO timestamp - roughly equates to when the roleplay end time
 
-    // User information
+    // User information - These are the claims you pass us through the JWT
     user: {
-        first_name: string; // We put the "learnerName" you give us into this field
-        last_name: string | null;
-        origin: string | null;
-        integration_identifier: string | null;
+        learnerName: string;
+        originDomain: string;
+        uniqueIdentifier: string;
     };
 
     // Roleplay configuration
