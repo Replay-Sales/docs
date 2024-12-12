@@ -274,8 +274,8 @@ interface RoleplayResult {
 
     // User information
     user: {
-        first_name: string;
-        last_name: string;
+        first_name: string; // We put the "learnerName" you give us into this field
+        last_name: string | null;
         origin: string | null;
         integration_identifier: string | null;
     };
@@ -285,12 +285,6 @@ interface RoleplayResult {
         title: string;
         passing_score: number;
     };
-
-    // Conversation transcript
-    snippets: Array<{
-        is_user: boolean;
-        text: string;
-    }>;
 
     // Scenario details
     scenario: {
@@ -308,10 +302,11 @@ interface RoleplayResult {
         company_name: string;
     };
 
-    // Evaluation criteria
-    scorecard: {
-        title: string;
-    };
+    // Conversation transcript
+    snippets: Array<{
+        is_user: boolean;
+        text: string;
+    }>;
 
     // Evaluation responses
     prompt_responses: Array<{
