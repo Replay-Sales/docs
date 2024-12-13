@@ -27,8 +27,16 @@
   },
   "tabs": [
     {
-      "name": "Documentation",
-      "url": "docs"
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
+      "name": "Walkthroughs",
+      "url": "walkthroughs"
+    },
+    {
+      "name": "Changelog",
+      "url": "changelog"
     }
   ],
   "codeBlock": { "mode": "auto" },
@@ -86,14 +94,23 @@
         "/pages/exporting-options/iframe"
       ]
     },
+
     {
       "group": "Walkthroughs",
-      "pages": ["/pages/walkthroughs/company-settings"]
+      "pages": ["/walkthroughs/company-settings"]
     },
+
+    {
+      "group": "Data Models",
+      "pages": ["/api-reference/data-models/roleplay-result"]
+    },
+
     {
       "group": "Changelog",
-      "pages": ["/pages/changelog/changelog"]
+      "pages": ["/changelog/changelog"]
     }
+
+
   ],
   "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/replaysales"
