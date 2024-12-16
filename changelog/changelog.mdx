@@ -4,7 +4,42 @@ New updates and improvements
 
 ## December 2024
 
-### Roleplay Enhancements
+### Week of December 16, 2024
+
+#### Features
+
+- **Webhook Integration**: Managers can now add webhooks through the "Company Settings" page to receive roleplay_results events when users complete roleplays
+- **Profile Picture Functionality**: Users can now set and display profile pictures throughout the app
+- **Enhanced Premade Roleplay**:
+  - Added objections functionality
+  - Implemented pass/fail messaging and passing score requirements
+  - Unified dropdown menus across folders and premade roleplay views
+  - Removed user agnostic related elements
+- **Start Screen Filtering**: Added ability to filter start screens by specific personas and situations, replacing the previous all-inclusive approach
+- **Admin Panel Improvements**:
+  - Implemented new copier functionalities for prompts, scorecards, objections, customer situations, and scenarios
+  - Transitioned away from legacy copying methods
+- **Billing Enhancements**: Added tracking and billing for total number of Replay Teams and LMS teams with active users
+- **Iframe Enhancement**: Extended data passing to include both SCORM iframe messages (score and pass/fail) and complete roleplay results
+
+<Accordion title="Bug Fixes">
+* Fixed AI scorecard generator issue with criteria saving
+* Resolved various Stripe-related billing issues
+* Corrected company billing setting usage numbers
+* Fixed race condition in AI scenario generation
+* Improved iframe result handling
+* Added company_id requirement for all prompts
+* Enhanced SCORM status reporting
+* Fixed customer situations display bug
+* Corrected user metadata handling from Supabase JWT
+* Decoupled replay record video from LiveKit video settings
+* Improved video recording controls
+* Fixed white label settings for "Powered by Replay" display
+</Accordion>
+
+### Week of December 9, 2024
+
+#### Roleplay Enhancements
 
 - Added new API endpoint allowing authenticated users to access complete roleplay transcript results
 - Enhanced premade roleplay experience: managers can now set specific objectives for reps to focus on during practice sessions
