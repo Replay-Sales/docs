@@ -20,7 +20,7 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
       height="100%"
       frameborder="0"
       border="none"
-      allow="microphone; camera; clipboard-write; downloads;"
+      allow="microphone; camera; clipboard-write; downloads; display-capture"
       style="position: absolute; left: 0; right: 0; bottom: 0; top: 0;"
     ></iframe>
     ```
@@ -35,7 +35,7 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
       * `integrationJwt` (a signed JWT that has the required claims. See step 2 for more details)
 
       **iframe attributes:**
-      * `allow="microphone; camera; clipboard-write; downloads;"`
+      * `allow="microphone; camera; clipboard-write; downloads; display-capture"`
         * `microphone` and `camera` allow us to record the user
         * `clipboard-write` allows the user to copy a link to their roleplay analysis
         * `downloads` allows the user to download their audio / video recording
@@ -112,7 +112,7 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
         height="100%"
         frameborder="0"
         border="none"
-        allow="microphone; camera; clipboard-write;"
+        allow="microphone; camera; clipboard-write; display-capture"
         style="
           background-color: red;
           position: absolute;
@@ -140,7 +140,7 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
             height="100%"
             frameborder="0"
             border="none"
-            allow="microphone; camera; clipboard-write;"
+            allow="microphone; camera; clipboard-write; display-capture"
             style="
               background-color: red;
               position: absolute;
