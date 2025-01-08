@@ -28,7 +28,8 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference"
+      "url": "api-reference",
+      "openapi": "https://app.replay.sale/api/docs"
     },
     {
       "name": "Walkthroughs",
@@ -94,23 +95,14 @@
         "/pages/exporting-options/iframe"
       ]
     },
-
     {
       "group": "Walkthroughs",
       "pages": ["/walkthroughs/company-settings"]
     },
-
-    {
-      "group": "Data Models",
-      "pages": ["/api-reference/data-models/roleplay-result"]
-    },
-
     {
       "group": "Changelog",
       "pages": ["/changelog/changelog"]
     }
-
-
   ],
   "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/replaysales"
