@@ -29,7 +29,7 @@
     {
       "name": "API Reference",
       "url": "api-reference",
-      "openapi": "https://app.replay.sale/api/docs"
+      "openapi": "https://staging.app.replay.sale/api/docs"
     },
     {
       "name": "Walkthroughs",
@@ -97,7 +97,10 @@
     },
     {
       "group": "Walkthroughs",
-      "pages": ["/walkthroughs/company-settings"]
+      "pages": [
+        "/walkthroughs/company-settings",
+        "/walkthroughs/adding-users"
+      ]
     },
     {
       "group": "Changelog",
