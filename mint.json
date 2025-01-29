@@ -29,7 +29,7 @@
     {
       "name": "API Reference",
       "url": "api-reference",
-      "openapi": "https://staging.app.replay.sale/api/docs"
+      "openapi": "https://app.replay.sale/api/docs"
     },
     {
       "name": "Walkthroughs",
