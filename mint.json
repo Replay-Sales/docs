@@ -62,23 +62,21 @@
       ]
     },
     {
-      "group": "Activities",
+      "group": "Build a Roleplay",
       "pages": [ 
-        "/pages/activities/premade-roleplays",
-        "/pages/activities/start-screen",
-        "/pages/activities/script-memorization"
+        "/pages/build-a-roleplay/roleplay-framework",
+        "/pages/build-a-roleplay/user-instructions",
+        "/pages/build-a-roleplay/conversation-types",
+        "/pages/build-a-roleplay/ai-personas",
+        "/pages/build-a-roleplay/scorecards",
+        "/pages/build-a-roleplay/advanced-settings"
       ]
     },
     {
-      "group": "Building Blocks",
+      "group": "Activities",
       "pages": [ 
-        "/pages/roleplay-building-blocks/scenarios",
-        "/pages/roleplay-building-blocks/customers",
-        "/pages/roleplay-building-blocks/scorecards",
-        "/pages/roleplay-building-blocks/skill-prompts",
-        "/pages/roleplay-building-blocks/solutions",
-        "/pages/roleplay-building-blocks/user-instructions",
-        "/pages/roleplay-building-blocks/responses"
+        "/pages/activities/start-screen",
+        "/pages/activities/script-memorization"
       ]
     },
     {
