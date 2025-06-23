@@ -48,7 +48,46 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
 
     * `learnerName` - User's name (first, last, or both)
     * `uniqueIdentifier` - Your database's unique identifier for this user (UUID, email, etc.)
-    * `originDomain` - Your company's domain (e.g., `app.replay.sale`)
+    * `originDomain` - Your company's domain identifier (see details below)
+
+    <Accordion title="What is originDomain and how should I set it?">
+      The `originDomain` is used to namespace users and prevent collisions between different companies or systems. Here's what you need to know:
+
+      **Purpose**: If you use simple identifiers like `1`, `2`, `3` for users, and another company also uses `1`, `2`, `3`, we need a way to distinguish between "User 1 from Company A" and "User 1 from Company B".
+
+      **How to set it**: 
+      * Use your main company domain (e.g., `mycompany.com`, `microsoft.com`, `google.com`)
+      * It does NOT need to match the actual domain where the iframe is hosted
+      * Use the same value consistently for all users within your organization
+      * For multi-tenant systems, you can use the same domain for all your customers
+
+      **Examples**:
+      * Single company: `"originDomain": "mycompany.com"`
+      * Multi-tenant SaaS: `"originDomain": "mycompany.com"` (same for all customers)
+    </Accordion>
+
+    <Accordion title="Multi-Company Setup & Security">
+      **If you manage multiple separate companies/clients:**
+
+      Each company should have its own secret key for security. This ensures that:
+      * Company A cannot access Company B's activities, even if they somehow obtain an iframe URL
+      * Users are properly isolated between companies
+      * Activity access is controlled at the company level
+
+      **How it works:**
+      * Each activity belongs to a specific company in Replay
+      * The secret key you use to sign the JWT determines which company the user belongs to
+      * When a user accesses an activity, we use the activity ID to look up which company owns it
+      * We then validate the JWT signature against that company's secret key
+      * Users can only access activities if their JWT was signed with the correct company's secret key
+
+      **Setup Process:**
+      1. Create separate child companies in Replay for each of your clients
+      2. Get a unique secret key for each company
+      3. Store and use the appropriate secret key when generating JWTs for each company's users
+
+      Contact us at hello@replay.sale to set up multiple companies and get separate secret keys.
+    </Accordion>
 
     <Warning>
       Need a secret key or lost yours? Contact us through email (hello@replay.sale) or Slack
@@ -87,7 +126,7 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
       const signReplayJwt = () => {
         const uniqueIdentifier = "asdf1234"; // Replace with the actual unique identifier of your user
         const learnerName = "John Doe"; // Replace with your actual learner name
-        const originDomain = "example.com"; // Replace with your domain
+        const originDomain = "example.com"; // Replace with your domain (used for namespacing users)
 
         const payload = {
           uniqueIdentifier,
@@ -214,6 +253,47 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
       </script>
       ```
     </CodeGroup>
+
+## Frequently Asked Questions
+
+<Accordion title="How do I handle multiple companies/clients in my system?">
+  **Each company should be set up as a separate entity in Replay with its own secret key.**
+
+  **Setup process:**
+  1. Contact us to create child companies for each of your clients
+  2. Get a unique secret key for each company
+  3. Store the appropriate secret key for each company in your system
+  4. Use the correct secret key when generating JWTs for users belonging to that company
+
+  **Security:** This ensures that users from Company A cannot access Company B's activities, even if they somehow obtain an iframe URL from Company B.
+</Accordion>
+
+<Accordion title="What should I use for originDomain in a multi-tenant system?">
+  **Use the same domain for all your customers** (e.g., `"mycompany.com"`).
+
+  The `originDomain` is for namespacing users between different systems, not between customers. Since all your customers' users are coming through your system, they should all use the same `originDomain`.
+
+  **Company separation is handled by:**
+  - Using different secret keys for each company
+  - Each activity belonging to a specific company in Replay
+</Accordion>
+
+<Accordion title="Can users access activities from other companies?">
+  **No, if set up correctly.** 
+
+  Here's exactly how the security validation works:
+  1. When a user accesses an activity, we use the activity ID from the iframe URL to look up which company owns that activity
+  2. We then validate the JWT signature against that specific company's secret key
+  3. If the JWT wasn't signed with the correct company's secret key, access is denied
+
+  This means even if a user somehow gets an iframe URL for a different company's activity, they won't be able to access it because their JWT was signed with their own company's secret key, not the target company's secret key.
+</Accordion>
+
+<Accordion title="Do I need different originDomain values for different customers?">
+  **No.** The `originDomain` is used to distinguish between different integration systems (e.g., "Microsoft vs Google"), not between customers within the same system.
+
+  If you're managing multiple customers through your platform, use the same `originDomain` for all of them. Company separation is handled through different secret keys and the activity ownership system.
+</Accordion>
 
 ## Message Passing
 
