@@ -40,6 +40,67 @@ There are two main parts of each AI bot: the persona and the background.
   - Decision makers
   - Competition knowledge
 
+## 🛠️ Configuration Options Overview
+
+Replay offers three core configuration options for delivering agent experiences. Each option serves different goals depending on user preference, performance needs, and visual requirements.
+
+| Configuration | Best For | Key Features |
+| :--- | :--- | :--- |
+| **Default Voice** | When you need a flexible, high-quality voice experience with screen sharing but no video. | <ul><li>Choose your own TTS provider</li><li>Screen sharing compatible</li><li>Low bandwidth usage</li></ul> |
+| **Real-Time API** | Live, real-time conversations where speed and responsiveness are critical. | <ul><li>Lowest latency for instant responses</li><li>Supports live video feeds (screen/webcam)</li><li>Fixed provider for optimal speed</li></ul> |
+| **Video Avatar** | Engaging users with a visual, lip-synced avatar for a more personal touch. | <ul><li>Animated, talking avatar</li><li>Stackable with other options</li><li>Customizable appearance</li></ul> |
+
+---
+
+### 🔊 1. Default Voice Option
+
+**Overview**:
+This is the most flexible option for users who want to deliver a high-quality voice experience without video.
+
+**Key Features**:
+
+* **Provider Choice**: Users can select their preferred TTS provider based on quality, latency, and price.
+* **Customizable**: Supports a wide range of providers, from fast/premium to slower/more cost-effective.
+* **Screen Sharing**: Fully compatible with screen sharing for guided walkthroughs and demos.
+* **No Video**: Does not support real-time webcam video, keeping bandwidth and complexity low.
+
+**Best For**:
+When users need spoken responses paired with screen interaction, without the need for a visual avatar or webcam feed.
+
+---
+
+### ⚡ 2. Real-Time API Option
+
+**Overview**:
+A low-latency, high-speed configuration for real-time experiences that require responsiveness and visual interaction.
+
+**Key Features**:
+
+* **Instant Response**: Prioritizes speed for seamless, natural conversations.
+* **Live Video Feed Support**: Enables agents to view the user's screen or webcam in real-time, if permissions are granted.
+* **Fixed Provider**: Not customizable like the default option—comes with a fixed voice/interaction pipeline.
+
+**Best For**:
+Live support scenarios, debugging, or any real-time collaborative sessions where fast back-and-forth is critical.
+
+---
+
+### 🧑‍💻 3. Video Avatar Option
+
+**Overview**:
+This configuration introduces a visually engaging avatar that lip-syncs with the agent's speech.
+
+**Key Features**:
+
+* **Lip-Synced Visuals**: Adds an animated, talking avatar to make the experience more immersive and personal.
+* **Stackable**: Can be added on top of either the Default Voice or Real-Time API configurations.
+* **Customizable Appearance**: Users can often customize the look and style of the avatar to match brand or tone.
+
+**Best For**:
+Use cases where visual presence increases engagement—like product walkthroughs, onboarding, or virtual assistants.
+
+---
+
 ## Creating Variety
 
 You can mix and match personas and backgrounds to create diverse training roleplays:
