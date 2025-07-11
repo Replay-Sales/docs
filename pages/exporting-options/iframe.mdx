@@ -8,6 +8,62 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
   Advanced! Developers with backend access to your LMS/Website is required for this method to work
 </Warning>
 
+<iframe 
+  width="100%" 
+  height="400" 
+  src="https://www.loom.com/embed/30d515c6465241ecb32f52598be63436?sid=532fdcc7-04e9-4c59-937a-caa47423dae8" 
+  frameBorder="0" 
+  allowFullScreen
+/>
+
+## Getting Started
+
+Before you begin the integration, you'll need to gather some information from your Replay account:
+
+### 1. Get Your Secret Key
+
+1. Navigate to **Company Settings** (may be labeled as "Manager Portal" in newer versions)
+2. Copy your **Secret Key** - this is what you'll use to sign your JWT tokens
+3. Store this securely in your environment variables
+
+<Warning>
+  Keep your secret key secure and never expose it in client-side code
+</Warning>
+
+### 2. Choose Your Activity Type
+
+Replay supports embedding different types of activities. You can get the iframe code for each from different locations:
+
+<Accordion title="All Roleplays Page">
+  **Location**: Use the Share menu on your main roleplays page
+  
+  **What it includes**: Gives users access to all folders and roleplays you've set up
+  
+  **Activity Type**: `all-roleplays`
+  
+  **Best for**: When you want users to browse and select from multiple roleplays
+</Accordion>
+
+<Accordion title="Specific Roleplay">
+  **Location**: Build Roleplay → Export → Iframe tab
+  
+  **What it includes**: Direct access to one specific roleplay
+  
+  **Activity Type**: `premade-roleplay`
+  
+  **Best for**: When you want users to complete a specific roleplay exercise
+</Accordion>
+
+<Accordion title="Script Memorization Activity">
+  **Location**: Script Memorization activity → Export → Iframe tab
+  
+  **What it includes**: Direct access to a script memorization exercise
+  
+  **Activity Type**: `script`
+  
+  **Best for**: When you want users to practice memorizing specific scripts or content
+</Accordion>
+
 <Steps>
   <Step title="Copy the Iframe">
     Each activity requires a specific iframe configuration. Here's the base template:
@@ -46,9 +102,22 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
   <Step title="Generate a Signed JWT">
     You must generate a unique JWT for each user using your secret key. The JWT requires these claims:
 
-    * `learnerName` - User's name (first, last, or both)
+    * `learnerName` - User's name (first, last, or both) - used for personalization in the roleplay
     * `uniqueIdentifier` - Your database's unique identifier for this user (UUID, email, etc.)
     * `originDomain` - Your company's domain identifier (see details below)
+
+    <Accordion title="How User Identification Works">
+      **User Creation/Linking Logic:**
+      
+      Replay uses the combination of `originDomain` + `uniqueIdentifier` to either:
+      - **Create a new user** if this combination doesn't exist in our database
+      - **Link to an existing user** if this exact combination already exists
+      
+      **Why both fields are needed:**
+      - `uniqueIdentifier` alone isn't enough because different companies might use simple IDs like "1", "2", "3"
+      - `originDomain` prevents collisions between different companies using the same simple identifiers
+      - Together, they create a unique namespace for each company's users
+    </Accordion>
 
     <Accordion title="What is originDomain and how should I set it?">
       The `originDomain` is used to namespace users and prevent collisions between different companies or systems. Here's what you need to know:
@@ -60,6 +129,7 @@ import IframeRoleplayResultInterface from '/snippets/IframeRoleplayResult.interf
       * It does NOT need to match the actual domain where the iframe is hosted
       * Use the same value consistently for all users within your organization
       * For multi-tenant systems, you can use the same domain for all your customers
+      * Can be your company's landing page, documentation site, or main application domain
 
       **Examples**:
       * Single company: `"originDomain": "mycompany.com"`
