@@ -77,7 +77,8 @@
       "group": "Activities",
       "pages": [ 
         "/pages/activities/start-screen",
-        "/pages/activities/script-memorization"
+        "/pages/activities/script-memorization",
+        "/pages/activities/recording-analyzer"
       ]
     },
     {
