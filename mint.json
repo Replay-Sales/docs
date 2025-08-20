@@ -51,7 +51,10 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [ "/pages/get-started/introduction" ]
+      "pages": [ 
+        "/pages/get-started/introduction",
+        "/pages/get-started/integrations"
+      ]
     },
     {
       "group": "Free To Use Tools",
