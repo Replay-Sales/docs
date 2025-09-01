@@ -3,27 +3,17 @@ title: 'Stripe Connect Setup'
 description: 'Replay allows you to use your own Stripe account and connect to us using [Stripe Connect](https://stripe.com/connect). This enables you to sell your products to your end users as you normally would, while Replay handles all the automation based on the data in your Stripe account.'
 ---
 
-## Pre-Step: Set Up Your Stripe Connect Account
+# Setup Steps
 
-To begin using Stripe Connect with Replay, you need to set up your Stripe account properly. 
-<br />If you already have an account, let us know. We can send a link that will allow you to directly link it to us. 
-<br />If not, also let us know. We'll send you a link to create an account as a connected account.
+Follow these steps to connect your Stripe account with Replay:
 
-## What Data We Can Access
+## 1. Set Up Your Stripe Account
 
-When Stripe Connect is properly configured, Replay can view and interact with: customer information, subscription data, product information, payment information, billing portal access
+Contact our support team (support@replay.sale) to begin the setup process.
+- **If you have an existing Stripe account**: We'll send you a link to connect it directly to Replay
+- **If you don't have a Stripe account**: We'll send you a link to create a Stripe account and automatically connect it to us
 
-<Note type="warning">
-**Security Warning:** Because we can access sensitive billing and customer data through Stripe Connect, ONLY set up this integration with people and companies you trust completely. This includes access to customer information, payment details, and subscription data.
-
-We do not use the the connector to charge accounts or process payments; we only use it to update and fetch relevant customer data.
-</Note>
-
-<Frame caption="Example of a connected account, with the various tabs we have access to">
-  <img src="/images/stripe-connected-account-example.png" alt="Stripe Connect Dashboard View - What partners can see in their Stripe dashboard when connected" />
-</Frame>
-
-## Product Metadata Configuration
+## 2. Configure Product Metadata
 
 The automation between Replay and Stripe is handled through **Stripe product metadata**. It's crucial that these metadata fields are set on the **product** level, not on the customer or subscription level.
 
@@ -43,7 +33,39 @@ You can use one, two, or all of the fields below on your stripe **product** to c
 **Unlimited Options:** To allow unlimited creation, simply **leave the metadata field off** for `numCreatableRolePlays` or `numCreatableScripts`.
 </Note>
 
-### Active User Definition
+## 3. Verify Integration
+
+After you have your stripe account set up and it is connected to us, we'll want to verify that everything is working correctly. 
+
+**Verification might include:**
+- Ensuring active users are reported (happens nightly at 12:00am UTC)
+- Ensuring any activity limits are being obeyed
+- Ensuring we can see your stripe account as a connected account
+
+**Possible issues might include:**
+- Misspelling product metadata
+- Setting metadata on the subscription or customer, instead of on the product
+- Not connecting your Stripe account to ours
+
+---
+
+# Reference Information
+
+## What Data We Can Access
+
+When Stripe Connect is properly configured, Replay can view and interact with: customer information, subscription data, product information, payment information, billing portal access
+
+<Note type="warning">
+**Security Warning:** Because we can access sensitive billing and customer data through Stripe Connect, ONLY set up this integration with people and companies you trust completely. This includes access to customer information, payment details, and subscription data.
+
+We do not use the connector to charge accounts or process payments; we only use it to update and fetch relevant customer data.
+</Note>
+
+<Frame caption="Example of a connected account, with the various tabs we have access to">
+  <img src="/images/stripe-connected-account-example.png" alt="Stripe Connect Dashboard View - What partners can see in their Stripe dashboard when connected" />
+</Frame>
+
+## Active User Definition
 
 Replay considers the following as **active users** for billing purposes:
 
@@ -105,11 +127,6 @@ Replay automatically reacts to the following Stripe subscription events:
 
 **Align your billing dates** with Replay's billing date to minimize discrepancies. This allows you to charge your customers based on the same usage data that Replay uses to bill you.
 
-## Security Note
-
-<Note type="warning">
-**Security Reminder:** When connecting with Stripe Connect, ensure you only connect with trusted partners and review the various tabs and permissions available in your Stripe dashboard.
-</Note>
 
 <Note type="info">
 **Need Help?** Contact our support team (support@replay.sale) for assistance with your Stripe Connect setup.
